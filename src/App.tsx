@@ -1,6 +1,6 @@
-import { Button } from "./components/button.component";
 import { Content } from "./components/content.component";
 import { Sidebar } from "./components/sidebar.component";
+import { ToDoListElement } from "./components/to-do-list-element.component";
 
 function App() {
     return (
@@ -9,11 +9,11 @@ function App() {
             <main className="flex flex-row gap-4 flex-1 overflow-hidden">
                 <Sidebar />
                 <Content>
-                    <Button
-                        callback={() => alert("Love")}
-                        label="❤"
-                        className="aspect-square mx-auto px-2 mb-4"
-                    />
+                    <ToDoListElement />
+                    <ToDoListElement selected />
+                    <ToDoListElement />
+                    <ToDoListElement />
+                    <ToDoListElement />
                 </Content>
             </main>
         </div>
