@@ -35,7 +35,10 @@ npm start
 
 ## 📸 Screenshots
 
-![App Screenshot](./screenshot.png)
+![TODOs Page](./screenshots/todos_page.png)
+![History Page](./screenshots/history_page.png)
+![Graphs Page](./screenshots/graphs_page.png)
+![About Page](./screenshots/about_page.png)
 
 ---
 
