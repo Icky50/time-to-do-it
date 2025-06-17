@@ -27,8 +27,9 @@ npm start
 ## 🛠️ Built With
 
 - [TypeScript](https://www.typescriptlang.org/)
-- [React](https://react.dev/) *(or your chosen framework)*
-- [Styled Components](https://styled-components.com/) *(optional for styling)*
+- [Vite](https://vite.dev/)
+- [React](https://react.dev/)
+- [Tailwindcss](https://tailwindcss.com/)
 
 ---
 

@@ -6,7 +6,7 @@ export function Sidebar() {
             <div className="space-y-3">
                 <Button className="w-full h-12" label="TODOs" />
                 <Button className="w-full h-12" label="History" />
-                <Button className="w-full h-12" label="Graph" />
+                <Button className="w-full h-12" label="Graphs" />
             </div>
             <div className="flex gap-3 mt-3">
                 <Button className="w-full h-12" label="About" />
