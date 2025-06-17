@@ -4,7 +4,7 @@ interface ContentProps {
 
 export function Content({ children }: ContentProps) {
     return (
-        <div className="flex flex-col justify-between w-full mr-4 h-[32rem] p-4 rounded-md bg-gray-400">
+        <div className="flex flex-col flex-1 p-4 rounded-md bg-gray-400 mr-4 mb-4">
             {children}
         </div>
     );
