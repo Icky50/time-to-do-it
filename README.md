@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+# ⏰ Time To Do It
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, elegant To-Do app to **track your tasks** and **measure the time** you spend on each one. Built with TypeScript.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 📋 Add, edit, and delete to-dos
+- ⏱️ Start/stop a timer for each task
+- 📊 See how much time you spend on each to-do
+- 🟢 Clean, intuitive interface
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/yourusername/time-to-do-it.git
+cd time-to-do-it
+npm install
+npm start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Built With
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://react.dev/) *(or your chosen framework)*
+- [Styled Components](https://styled-components.com/) *(optional for styling)*
+
+---
+
+## 📸 Screenshots
+
+![App Screenshot](./screenshot.png)
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+> Stay productive and mindful of your time with **Time To Do It**!
