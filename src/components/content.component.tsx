@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { About } from "../pages/About.page";
 import { TODO } from "../pages/TODO.page";
+import { History } from "../pages/History.page";
+import { Graphs } from "../pages/Graphs.page";
 
 function getPage(pathname: string) {
     switch (pathname) {
@@ -9,16 +11,16 @@ function getPage(pathname: string) {
         case "/about":
             return <About />;
         case "/history":
-            return <div>History Page</div>;
+            return <History />;
         case "/graphs":
-            return <div>Graphs Page</div>;
+            return <Graphs />;
         default:
             return <div>404 Not Found</div>;
     }
 }
 
 export function Content() {
-    const [path, setPath] = useState(window.location.pathname);
+    const [,setPath] = useState(window.location.pathname);
 
     useEffect(() => {
         const handlePopState = () => {
