@@ -1,4 +1,5 @@
 import { Content } from "./components/content.component";
+import { NewToDoElement } from "./components/new-to-do-element.component";
 import { Sidebar } from "./components/sidebar.component";
 import { ToDoListElement } from "./components/to-do-list-element.component";
 
@@ -9,11 +10,18 @@ function App() {
             <main className="flex flex-row gap-4 flex-1 overflow-hidden">
                 <Sidebar />
                 <Content>
-                    <ToDoListElement />
-                    <ToDoListElement selected />
-                    <ToDoListElement />
-                    <ToDoListElement />
-                    <ToDoListElement />
+                    <div className="flex flex-col justify-between h-full">
+                        <div>
+                            <ToDoListElement />
+                            <ToDoListElement selected />
+                            <ToDoListElement />
+                            <ToDoListElement />
+                            <ToDoListElement />
+                        </div>
+                        <div>
+                            <NewToDoElement />
+                        </div>
+                    </div>
                 </Content>
             </main>
         </div>
