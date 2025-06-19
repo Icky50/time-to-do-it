@@ -24,19 +24,18 @@ export function ToDoListElement({ selected }: ToDoListElementProps) {
             />
 
             <div
-                className="bg-transparent
-                        border border-white/30
-                        rounded-md
-                        p-4 w-full"
+                className={`rounded-t-md
+                        bg-blue-500
+                        p-4 w-full ${!selected ? "rounded-b-md border-gray-400 border-b box-border" : ""}`}
             >
                 Name
             </div>
 
-            <div className="flex items-center gap-x-4 h-full">
+            <div className="flex items-center gap-x-4 h-full w-3xs">
                 <div className="text-sm grow text-center">00:00</div>
 
-                <Button className="p-4 h-full aspect-square" label="▶" />
-                <Button className="p-4 h-full aspect-square" label="✖" />
+                <Button className="h-full aspect-square" label="▶" />
+                <Button className="h-full aspect-square" label="✖" />
             </div>
 
             {selected && (
@@ -46,11 +45,10 @@ export function ToDoListElement({ selected }: ToDoListElementProps) {
                     <textarea
                         defaultValue="Description"
                         className="
-							bg-transparent
-							border border-white/30
-							rounded-md
+							bg-blue-500
+                            border-t-3 border-gray-400
+							rounded-b-md
 							px-3 py-2
-							placeholder-white/50
 							min-h-[70px]
 							w-full
 							resize-none
@@ -60,9 +58,15 @@ export function ToDoListElement({ selected }: ToDoListElementProps) {
                         disabled
                     />
 
-                    <div className="flex gap-4">
-                        <Button className="p-4 aspect-square" label="🖊" />
-                        <Button className="w-full p-4" label="Reset Timer" />
+                    <div className="flex gap-x-4">
+                        <Button
+                            className="px-5 aspect-square"
+                            label="🖊"
+                        />
+                        <Button
+                            className="w-full h-full p-4"
+                            label="Reset Timer"
+                        />
                     </div>
                 </>
             )}
