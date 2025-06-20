@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ToDoElement } from "../models/to-do-element.model";
 import { ToDoListHistoryElement } from "../components/to-do-list-history-element.component";
+import { HistoryOptions } from "../components/history-options.component";
 
 export function History() {
     const [toDoElements, setToDoElements] = useState<ToDoElement[]>([]);
@@ -71,9 +72,7 @@ export function History() {
     return (
         <div className="flex flex-col justify-between h-full">
             <div>{getHTMLElements()}</div>
-            <div>
-                
-            </div>
+            <HistoryOptions />
         </div>
     );
 }
