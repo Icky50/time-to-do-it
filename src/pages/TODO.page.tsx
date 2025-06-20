@@ -1,20 +1,7 @@
 import { useEffect, useState } from "react";
 import { NewToDoElement } from "../components/new-to-do-element.component";
 import { ToDoListElement } from "../components/to-do-list-element.component";
-
-class ToDoElement {
-    id: string;
-    name: string;
-    description: string;
-    time: number;
-
-    constructor(id: string, name: string, description: string, time: number) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.time = time;
-    }
-}
+import { ToDoElement } from "../models/to-do-element.model";
 
 export function TODO() {
     const [toDoElements, setToDoElements] = useState<ToDoElement[]>([]);
@@ -75,12 +62,7 @@ export function TODO() {
         }
         // remove from current list
         setToDoElements((previous) =>
-            previous.filter((element) => {
-                if (element.id === id) {
-                    element.time += 1; // Increment time by 1 minute
-                }
-                return element;
-            })
+            previous.filter((element) => element.id !== id)
         );
     };
 
@@ -93,6 +75,7 @@ export function TODO() {
                 key={element.id}
                 onRemove={() => handleRemoveToDo(element.id)}
                 onSelect={() => setSelectedElementID(element.id)}
+                onCheck={() => handleCheckToDo(element.id)}
                 selected={selectedElementID === element.id}
             />
         ));

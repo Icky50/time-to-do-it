@@ -8,37 +8,35 @@ interface ToDoListElementProps {
     name: string;
     description?: string;
     time?: number;
-    onRemove: () => void;
+    onDeleteFromHistory: () => void;
+    onRecover: () => void;
     onSelect: () => void;
-    onCheck: () => void;
 }
 
-export function ToDoListElement({
+export function ToDoListHistoryElement({
     selected,
     name,
     description,
     time,
-    onRemove,
+    onDeleteFromHistory,
+    onRecover,
     onSelect,
-    onCheck,
 }: ToDoListElementProps) {
     return (
         <div
             className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4"
             onClick={() => onSelect()}
         >
-            <ToDoCheckbox onChange={() => onCheck()} />
+            <ToDoCheckbox onChange={() => onRecover()} checked />
 
             <ToDoName name={name} selected={selected ?? false} />
 
             <div className="flex items-center gap-x-4 h-full w-3xs">
                 <div className="text-sm grow text-center">{time}</div>
-
-                <Button className="h-full aspect-square" label="▶" />
                 <Button
                     className="h-full aspect-square"
                     label="✖"
-                    callback={() => onRemove()}
+                    callback={() => onDeleteFromHistory()}
                 />
             </div>
 
@@ -47,14 +45,6 @@ export function ToDoListElement({
                     <div />
 
                     <ToDoDescription description={description} />
-
-                    <div className="flex gap-x-4">
-                        <Button className="px-5 aspect-square" label="🖊" />
-                        <Button
-                            className="w-full h-full p-4"
-                            label="Reset Timer"
-                        />
-                    </div>
                 </>
             )}
         </div>
