@@ -18,13 +18,22 @@ class ToDoElement {
 
 export function TODO() {
     const [toDoElements, setToDoElements] = useState<ToDoElement[]>([]);
+    const [toDoElementsHistory, setToDoElementsHistory] = useState<
+        ToDoElement[]
+    >([]);
     const [hasLoaded, setHasLoaded] = useState(false);
     const [selectedElementID, setSelectedElementID] = useState<string>("");
 
     useEffect(() => {
-        const saved = localStorage.getItem("toDoElements");
-        if (saved) {
-            setToDoElements(JSON.parse(saved));
+        const savedToDoElementsHistory = localStorage.getItem(
+            "toDoElementsHistory"
+        );
+        const savedToDoElements = localStorage.getItem("toDoElements");
+        if (savedToDoElementsHistory) {
+            setToDoElementsHistory(JSON.parse(savedToDoElementsHistory));
+        }
+        if (savedToDoElements) {
+            setToDoElements(JSON.parse(savedToDoElements));
         }
         setHasLoaded(true);
     }, []);
@@ -33,6 +42,14 @@ export function TODO() {
         if (!hasLoaded) return;
         localStorage.setItem("toDoElements", JSON.stringify(toDoElements));
     }, [toDoElements, hasLoaded]);
+
+    useEffect(() => {
+        if (!hasLoaded) return;
+        localStorage.setItem(
+            "toDoElementsHistory",
+            JSON.stringify(toDoElementsHistory)
+        );
+    }, [toDoElementsHistory, hasLoaded]);
 
     const handleAddToDo = (title: string, description: string) => {
         const newElement = new ToDoElement(
@@ -50,16 +67,33 @@ export function TODO() {
         );
     };
 
+    const handleCheckToDo = (id: string) => {
+        // add to history
+        const element = toDoElements.find((el) => el.id === id);
+        if (element) {
+            setToDoElementsHistory((previous) => [...previous, element]);
+        }
+        // remove from current list
+        setToDoElements((previous) =>
+            previous.filter((element) => {
+                if (element.id === id) {
+                    element.time += 1; // Increment time by 1 minute
+                }
+                return element;
+            })
+        );
+    };
+
     const getHTMLElements = () => {
-        return toDoElements.map((element, index) => (
+        return toDoElements.map((element) => (
             <ToDoListElement
-				name={element.name}
-				description={element.description}
-				time={element.time}
+                name={element.name}
+                description={element.description}
+                time={element.time}
                 key={element.id}
                 onRemove={() => handleRemoveToDo(element.id)}
                 onSelect={() => setSelectedElementID(element.id)}
-				selected={selectedElementID === element.id}
+                selected={selectedElementID === element.id}
             />
         ));
     };

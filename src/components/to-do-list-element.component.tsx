@@ -7,6 +7,7 @@ interface ToDoListElementProps {
     time?: number;
     onRemove: () => void;
     onSelect: () => void;
+    onCheck: () => void;
 }
 
 export function ToDoListElement({
@@ -15,10 +16,14 @@ export function ToDoListElement({
     description,
     time,
     onRemove,
-    onSelect
+    onSelect,
+    onCheck,
 }: ToDoListElementProps) {
     return (
-        <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4" onClick={() => onSelect()}>
+        <div
+            className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4"
+            onClick={() => onSelect()}
+        >
             <input
                 type="checkbox"
                 className="
@@ -33,6 +38,7 @@ export function ToDoListElement({
 					cursor-pointer
 					transition-colors
 				"
+                onChange={() => onCheck()}
             />
 
             <div
