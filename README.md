@@ -55,7 +55,7 @@ I used generative AI in the form of LLMs to help me with this project.
 
 ## 📄 License
 
-MIT
+[MIT](./LICENSE.md)
 
 ---
 
