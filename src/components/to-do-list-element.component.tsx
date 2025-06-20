@@ -6,6 +6,7 @@ interface ToDoListElementProps {
     description?: string;
     time?: number;
     onRemove: () => void;
+    onSelect: () => void;
 }
 
 export function ToDoListElement({
@@ -14,9 +15,10 @@ export function ToDoListElement({
     description,
     time,
     onRemove,
+    onSelect
 }: ToDoListElementProps) {
     return (
-        <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4">
+        <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4" onClick={() => onSelect()}>
             <input
                 type="checkbox"
                 className="

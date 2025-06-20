@@ -58,8 +58,8 @@ export function TODO() {
 				time={element.time}
                 key={element.id}
                 onRemove={() => handleRemoveToDo(element.id)}
-                // selected={selectedElementID === element.id}
-				selected={index === 3}
+                onSelect={() => setSelectedElementID(element.id)}
+				selected={selectedElementID === element.id}
             />
         ));
     };
