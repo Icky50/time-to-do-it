@@ -31,7 +31,7 @@ export function ToDoListHistoryElement({
 
             <ToDoName name={name} selected={selected ?? false} />
 
-            <div className="flex items-center gap-x-4 h-full w-3xs">
+            <div className="flex items-center gap-x-4 h-full w-40">
                 <div className="text-sm grow text-center">{time}</div>
                 <Button
                     className="h-full aspect-square"

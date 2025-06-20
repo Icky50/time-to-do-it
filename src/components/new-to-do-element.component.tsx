@@ -30,10 +30,12 @@ export function NewToDoElement({ onAdd }: NewToDoElementProps) {
                     className="w-sm"
                     label="Add"
                     callback={() => {
+                        if (!title.trim()) return;
                         onAdd(title, description);
                         setTitle("");
                         setDescription("");
                     }}
+                    disabled={!title.trim()}
                 />
             </div>
         </div>
