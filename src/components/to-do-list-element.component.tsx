@@ -2,9 +2,19 @@ import { Button } from "./button.component";
 
 interface ToDoListElementProps {
     selected?: boolean;
+    name: string;
+    description?: string;
+    time?: number;
+    onRemove: () => void;
 }
 
-export function ToDoListElement({ selected }: ToDoListElementProps) {
+export function ToDoListElement({
+    selected,
+    name,
+    description,
+    time,
+    onRemove,
+}: ToDoListElementProps) {
     return (
         <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4">
             <input
@@ -26,16 +36,24 @@ export function ToDoListElement({ selected }: ToDoListElementProps) {
             <div
                 className={`rounded-t-md
                         bg-blue-500
-                        p-4 w-full ${!selected ? "rounded-b-md border-gray-400 border-b box-border" : ""}`}
+                        p-4 w-full ${
+                            !selected
+                                ? "rounded-b-md border-gray-400 border-b box-border"
+                                : ""
+                        }`}
             >
-                Name
+                {name !== "" ? name : "TODO"}
             </div>
 
             <div className="flex items-center gap-x-4 h-full w-3xs">
-                <div className="text-sm grow text-center">00:00</div>
+                <div className="text-sm grow text-center">{time}</div>
 
                 <Button className="h-full aspect-square" label="▶" />
-                <Button className="h-full aspect-square" label="✖" />
+                <Button
+                    className="h-full aspect-square"
+                    label="✖"
+                    callback={() => onRemove()}
+                />
             </div>
 
             {selected && (
@@ -43,7 +61,7 @@ export function ToDoListElement({ selected }: ToDoListElementProps) {
                     <div />
 
                     <textarea
-                        defaultValue="Description"
+                        defaultValue={description || "No description"}
                         className="
 							bg-blue-500
                             border-t-3 border-gray-400
@@ -59,10 +77,7 @@ export function ToDoListElement({ selected }: ToDoListElementProps) {
                     />
 
                     <div className="flex gap-x-4">
-                        <Button
-                            className="px-5 aspect-square"
-                            label="🖊"
-                        />
+                        <Button className="px-5 aspect-square" label="🖊" />
                         <Button
                             className="w-full h-full p-4"
                             label="Reset Timer"
