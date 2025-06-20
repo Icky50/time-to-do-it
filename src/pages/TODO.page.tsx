@@ -51,14 +51,15 @@ export function TODO() {
     };
 
     const getHTMLElements = () => {
-        return toDoElements.map((element) => (
+        return toDoElements.map((element, index) => (
             <ToDoListElement
 				name={element.name}
 				description={element.description}
 				time={element.time}
                 key={element.id}
                 onRemove={() => handleRemoveToDo(element.id)}
-                selected={selectedElementID === element.id}
+                // selected={selectedElementID === element.id}
+				selected={index === 3}
             />
         ));
     };
