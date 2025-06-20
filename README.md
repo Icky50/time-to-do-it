@@ -33,6 +33,17 @@ npm start
 
 ---
 
+## ✨AI helped me with this project
+
+I used generative AI in the form of LLMs to help me with this project.
+
+- I used the AI to do simple styling, which I almost always touched up by hand
+- I used the AI to generate code when I got stuck on individual problems or needed an approach for some features. I didn't copy-paste any code I didn't understand
+- No images were created using AI
+- No texts were created using AI
+
+---
+
 ## 📸 Screenshots
 
 ![TODOs Page](./screenshots/todos_page.png)
