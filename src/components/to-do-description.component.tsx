@@ -1,8 +1,10 @@
 interface ToDoDescriptionProps {
     description?: string;
+    editMode: boolean;
+    onChange?: (description: string) => void;
 }
 
-export function ToDoDescription({ description }: ToDoDescriptionProps) {
+export function ToDoDescription({ description, editMode, onChange }: ToDoDescriptionProps) {
     return (
         <textarea
             defaultValue={description || "No description"}
@@ -14,10 +16,17 @@ export function ToDoDescription({ description }: ToDoDescriptionProps) {
 							min-h-[70px]
 							w-full
 							resize-none
+                            focus:outline-none
 						"
             rows={3}
-            readOnly
-            disabled
+            readOnly={!editMode}
+            disabled={!editMode}
+            placeholder="No description"
+            onChange={(e) => {
+                if (editMode && e.target.value) {
+                    onChange?.((e.target.value ?? "").trim());
+                }
+            }}
         />
     );
 }

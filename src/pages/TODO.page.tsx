@@ -66,6 +66,16 @@ export function TODO() {
         );
     };
 
+    const handleEditConfirmed = (id: string, title: string, description: string) => {
+        setToDoElements((previous) =>
+            previous.map((element) =>
+                element.id === id
+                    ? new ToDoElement(element.id, title, description, element.time)
+                    : element
+            )
+        );
+    };
+
     const getHTMLElements = () => {
         return toDoElements.map((element) => (
             <ToDoListElement
@@ -77,6 +87,9 @@ export function TODO() {
                 onSelect={() => setSelectedElementID(element.id)}
                 onCheck={() => handleCheckToDo(element.id)}
                 selected={selectedElementID === element.id}
+                onEditConfirmed={(title, description) =>
+                    handleEditConfirmed(element.id, title, description)
+                }
             />
         ));
     };
