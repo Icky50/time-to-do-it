@@ -169,6 +169,15 @@ export function ToDoListElement({
                         <Button
                             className="w-full h-full p-4"
                             label="Reset Timer"
+                            callback={() => {
+                                onTimerUpdate({
+                                    id,
+                                    isRunning: false,
+                                    startTime: null,
+                                    elapsedTime: 0,
+                                });
+                                setDisplayTime(0);
+                            }}
                         />
                     </div>
                 </>
