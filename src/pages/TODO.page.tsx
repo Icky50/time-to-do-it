@@ -76,12 +76,37 @@ export function TODO() {
         );
     };
 
+    const handleTimerUpdate = (updatedTimer: {
+        id: string;
+        isRunning: boolean;
+        startTime: number | null;
+        elapsedTime: number;
+    }) => {
+        setToDoElements((previous) =>
+            previous.map((element) =>
+                element.id === updatedTimer.id
+                    ? new ToDoElement(
+                          element.id,
+                          element.name,
+                          element.description,
+                          updatedTimer.elapsedTime,
+                          updatedTimer.isRunning,
+                          updatedTimer.startTime
+                      )
+                    : element
+            )
+        );
+    };
+
     const getHTMLElements = () => {
         return toDoElements.map((element) => (
             <ToDoListElement
+                id={element.id}
                 name={element.name}
                 description={element.description}
                 time={element.time}
+                isTimerRunning={element.isTimerRunning}
+                lastTimerStartTime={element.lastTimerStart}
                 key={element.id}
                 onRemove={() => handleRemoveToDo(element.id)}
                 onSelect={() => setSelectedElementID(element.id)}
@@ -90,6 +115,7 @@ export function TODO() {
                 onEditConfirmed={(title, description) =>
                     handleEditConfirmed(element.id, title, description)
                 }
+                onTimerUpdate={handleTimerUpdate}
             />
         ));
     };

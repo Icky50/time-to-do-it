@@ -1,3 +1,4 @@
+import { formatTime } from "../utility/timer_utility_functions";
 import { Button } from "./button.component";
 import { ToDoCheckbox } from "./to-do-checkbox.component";
 import { ToDoDescription } from "./to-do-description.component";
@@ -29,10 +30,10 @@ export function ToDoListHistoryElement({
         >
             <ToDoCheckbox onChange={() => onRecover()} checked />
 
-            <ToDoName name={name} selected={selected ?? false} />
+            <ToDoName name={name} selected={selected ?? false} editMode={false} />
 
             <div className="flex items-center gap-x-4 h-full w-40">
-                <div className="text-sm grow text-center">{time}</div>
+                <div className="text-sm grow text-center">{formatTime(time ?? 0)}</div>
                 <Button
                     className="h-full aspect-square"
                     label="✖"
@@ -44,7 +45,7 @@ export function ToDoListHistoryElement({
                 <>
                     <div />
 
-                    <ToDoDescription description={description} />
+                    <ToDoDescription description={description} editMode={false} />
                 </>
             )}
         </div>
