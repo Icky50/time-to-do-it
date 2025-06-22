@@ -2,11 +2,16 @@ import { useState } from "react";
 
 interface TODOCheckboxProps {
     onChange: (checked: boolean) => void;
-	checked?: boolean;
+    checked?: boolean;
 }
 
-export function ToDoCheckbox({ onChange, checked: checkedAtBeginning }: TODOCheckboxProps) {
-	const [checked, setChecked] = useState<boolean>(checkedAtBeginning || false);
+export function ToDoCheckbox({
+    onChange,
+    checked: checkedAtBeginning,
+}: TODOCheckboxProps) {
+    const [checked, setChecked] = useState<boolean>(
+        checkedAtBeginning || false
+    );
 
     return (
         <input
@@ -23,9 +28,14 @@ export function ToDoCheckbox({ onChange, checked: checkedAtBeginning }: TODOChec
 					cursor-pointer
 					transition-colors
 				"
-			value={checked ? "on" : "off"}
-            onChange={() => {onChange(checked); setChecked(!checked)}}
-			checked={checkedAtBeginning}
+            value={checked ? "on" : "off"}
+            onChange={() => {
+                setChecked((p) => {
+                    onChange(!p);
+                    return !p;
+                });
+            }}
+            checked={checkedAtBeginning}
         />
     );
 }
