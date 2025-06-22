@@ -70,7 +70,7 @@ export function TODO() {
                     null
                 );
             }
-            setToDoElementsHistory((previous) => [...previous, element]);
+            setToDoElementsHistory((previous) => [...previous, updatedElement]);
         }
         // remove from current list
         setToDoElements((previous) =>
