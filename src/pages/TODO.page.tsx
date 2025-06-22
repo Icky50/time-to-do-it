@@ -58,6 +58,18 @@ export function TODO() {
         // add to history
         const element = toDoElements.find((el) => el.id === id);
         if (element) {
+            let updatedElement = element;
+            if (element.isTimerRunning && element.lastTimerStart !== null) {
+                const now = Date.now();
+                updatedElement = new ToDoElement(
+                    element.id,
+                    element.name,
+                    element.description,
+                    element.time + (now - element.lastTimerStart),
+                    false,
+                    null
+                );
+            }
             setToDoElementsHistory((previous) => [...previous, element]);
         }
         // remove from current list

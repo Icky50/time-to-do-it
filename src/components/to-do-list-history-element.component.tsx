@@ -28,7 +28,7 @@ export function ToDoListHistoryElement({
             className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4"
             onClick={() => onSelect()}
         >
-            <ToDoCheckbox onChange={() => onRecover()} checked />
+            <ToDoCheckbox onChange={(checked) => !checked ? onRecover() : () => {}} checked />
 
             <ToDoName name={name} selected={selected ?? false} editMode={false} />
 

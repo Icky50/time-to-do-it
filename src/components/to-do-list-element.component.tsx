@@ -99,7 +99,9 @@ export function ToDoListElement({
             className="grid grid-cols-[auto_1fr_auto] gap-x-4 items-center mb-4"
             onClick={() => onSelect()}
         >
-            <ToDoCheckbox onChange={() => {handleStopTimer(); onCheck();}} />
+            <ToDoCheckbox
+                onChange={(checked) => checked ? onCheck() : () => {}}
+            />
 
             <ToDoName
                 name={nameState}
