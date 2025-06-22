@@ -72,7 +72,7 @@ export function History() {
     return (
         <div className="flex flex-col justify-between h-full">
             <div>{getHTMLElements()}</div>
-            <HistoryOptions />
+            <HistoryOptions onClear={() => {setToDoElementsHistory([])}}/>
         </div>
     );
 }
