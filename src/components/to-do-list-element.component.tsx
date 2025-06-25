@@ -3,7 +3,7 @@ import { Button } from "./button.component";
 import { ToDoCheckbox } from "./to-do-checkbox.component";
 import { ToDoDescription } from "./to-do-description.component";
 import { ToDoName } from "./to-do-name.component";
-import { formatTime } from "../utility/timer_utility_functions";
+import { formatTime } from "../utility/timer-utility-functions";
 
 interface ToDoListElementProps {
     id: string;
