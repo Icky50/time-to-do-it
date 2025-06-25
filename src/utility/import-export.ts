@@ -1,4 +1,4 @@
-import type { ToDoElement } from "../models/to-do-element.model";
+import { ToDoElement } from "../models/to-do-element.model";
 import { ToDoExportFormat } from "../models/to-do-export-format";
 
 const getActiveTODOs = (): ToDoExportFormat[] => {
@@ -7,6 +7,11 @@ const getActiveTODOs = (): ToDoExportFormat[] => {
         ? JSON.parse(savedToDoElementsJSON)
         : [];
     return savedToDoElements.map((element: ToDoElement) => {
+        let updatedTime = element.time;
+        if (element.isTimerRunning && element.lastTimerStart !== null) {
+                const now = Date.now();
+                updatedTime = element.time + (now - element.lastTimerStart);
+            }
         return new ToDoExportFormat(
             element.id,
             element.name,
