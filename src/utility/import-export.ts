@@ -16,7 +16,7 @@ const getActiveTODOs = (): ToDoExportFormat[] => {
             element.id,
             element.name,
             element.description,
-            element.time
+            updatedTime
         );
     });
 };
