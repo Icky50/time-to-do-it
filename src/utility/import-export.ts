@@ -136,18 +136,24 @@ const loadJSONFromFile = async(): Promise<string> => {
 
 export const importFromJSONFile = async () => {
     const jsonString = await loadJSONFromFile();
-    if (!jsonString) {
-        return { activeTODOs: [], archivedTODOs: [] };
-    }
+    
     const { activeTODOs, archivedTODOs } = parseAndValidateJSON(jsonString);
     const oldActiveTODOs = localStorage.getItem("toDoElements");
     const oldArchivedTODOs = localStorage.getItem("toDoElementsHistory");
+    if (!jsonString) {
+        return {
+            oldActiveTODOs,
+            oldArchivedTODOs
+        };
+    }
     const oldActiveTODOsParsed = oldActiveTODOs ? JSON.parse(oldActiveTODOs) : [];
     const oldArchivedTODOsParsed = oldArchivedTODOs ? JSON.parse(oldArchivedTODOs) : [];
     const mergedActiveTODOs = mergeTODOs(oldActiveTODOsParsed, activeTODOs);
     const mergedArchivedTODOs = mergeTODOs(oldArchivedTODOsParsed, archivedTODOs);
-    localStorage.setItem("toDoElements", JSON.stringify(mergedActiveTODOs));
-    localStorage.setItem("toDoElementsHistory", JSON.stringify(mergedArchivedTODOs));
+    return {
+        mergedActiveTODOs,
+        mergedArchivedTODOs
+    };
 };
 
 export const mergeTODOs = (

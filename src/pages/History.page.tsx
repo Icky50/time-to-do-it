@@ -10,6 +10,7 @@ export function History() {
     >([]);
     const [hasLoaded, setHasLoaded] = useState(false);
     const [selectedElementID, setSelectedElementID] = useState<string>("");
+    const [update, setUpdate] = useState(0);
 
     useEffect(() => {
         const savedToDoElementsHistory = localStorage.getItem(
@@ -28,7 +29,7 @@ export function History() {
     useEffect(() => {
         if (!hasLoaded) return;
         localStorage.setItem("toDoElements", JSON.stringify(toDoElements));
-    }, [toDoElements, hasLoaded]);
+    }, [toDoElements, hasLoaded, update]);
 
     useEffect(() => {
         if (!hasLoaded) return;
@@ -36,7 +37,7 @@ export function History() {
             "toDoElementsHistory",
             JSON.stringify(toDoElementsHistory)
         );
-    }, [toDoElementsHistory, hasLoaded]);
+    }, [toDoElementsHistory, hasLoaded, update]);
 
     const handleDeleteFromHistory = (id: string) => {
         setToDoElementsHistory((previous) =>
@@ -72,7 +73,7 @@ export function History() {
     return (
         <div className="flex flex-col justify-between h-full">
             <div>{getHTMLElements()}</div>
-            <HistoryOptions onClear={() => {setToDoElementsHistory([])}}/>
+            <HistoryOptions onClear={() => {setToDoElementsHistory([])}} onImport={({activeTODOs, archivedTODOs}) => {setToDoElements(activeTODOs); setToDoElementsHistory(archivedTODOs)}}/>
         </div>
     );
 }
